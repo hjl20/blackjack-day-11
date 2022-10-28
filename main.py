@@ -96,14 +96,14 @@ def blackjack():
   
   for i in range(2):
     deal_card(player_hand)
-    deal_card(dealer_hand)
+  deal_card(dealer_hand)
 
   #Sum up hands and show cards
   player_sum = sum(player_hand)
   dealer_sum = sum(dealer_hand)
   
   print(f"  Your cards: {player_hand} = {player_sum}")
-  print(f"  Dealer's first card: {dealer_hand[1]}")
+  print(f"  Dealer's has: {dealer_hand[0]}")
   print("")
   
   #Player's turn
@@ -135,8 +135,12 @@ def blackjack():
       sleep(1)
       
     #Player stands
-    else:
+    elif draw_card =="n":
       player_turn = False
+
+    #Invalid input
+    else:
+      print("Please choose either y/n\n")
   
   #Dealer's turn and must hit while under 16 and stand at 17
   while dealer_turn:
@@ -161,17 +165,13 @@ def blackjack():
         dealer_turn = False
 
       #Show dealer's hand after each hit
-      print(f"  Dealer's open cards: {dealer_hand[1:]} = {dealer_sum-dealer_hand[0]}\n")
+      print(f"  Dealer's cards: {dealer_hand} = {dealer_sum}\n")
       sleep(1)
 
     #Dealer stands (all turns over)
     else:
       dealer_turn = False
-      print("Dealer stands..")
-      sleep(2)
-      print("Dealer's hidden card was..")
-      sleep(5)
-      print(f"{dealer_hand[0]}!\n")
+      print("Dealer stands..\n")
       sleep(2)
 
       #Compare totals to end game
